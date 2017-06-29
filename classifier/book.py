@@ -4,7 +4,7 @@ from classifier.classifier import Classifier
 
 bookExtensions = [".pdf",".epub", ".mobi"];
 
-class MovieClassifier (Classifier):
+class BookClassifier (Classifier):
     SCORE_IS_BOOK = 1
     SCORE_IS_NOT_BOOK = 0
 

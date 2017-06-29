@@ -2,7 +2,7 @@ import filesystem.directory
 from filesystem.ignored import Ignored
 from classifier.tvshow import TvShowClassifier
 from classifier.movie import MovieClassifier
-from classifier.book import bookClassifier
+from classifier.book import BookClassifier
 from sys import exit
 import classifier.prompt as prompt
 #import classifier.movie as movie
@@ -11,7 +11,7 @@ class Classifier:
     def __init__ (self, ignoredDatabase):
         self.tvShowClassifier = TvShowClassifier()
         self.movieClassifier = MovieClassifier()
-        self.bookClassifier = bookClassifier()
+        self.bookClassifier = BookClassifier()
         assert (isinstance (ignoredDatabase, Ignored))
         self.ignoredDatabase = ignoredDatabase
 
@@ -21,7 +21,7 @@ class Classifier:
             response = prompt.yesNoPrompt("Is {name} a Book?".format(name=item.name))
             if response == "Y":
                 classifyAsBook()
-        
+
 
         return self.classifyFromUserInput(item)
 
