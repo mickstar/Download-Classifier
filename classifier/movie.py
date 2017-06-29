@@ -1,9 +1,9 @@
-import classifier.movieTokenData as movieTokenData
+import classifier.tokens as tokens
 from classifier.classifier import Classifier
 class MovieClassifier (Classifier):
     def __init__(self):
-        self.movieTokens = movieTokenData.movieTokens
+        pass
 
     def calculateMovieScore (self, item):
-        score = self.calculateSimilarity (item.upper(), self.movieTokens)
+        score = self.calculateSimilarity (item.name.upper(), tokens.movieTokens)
         return (item, score)

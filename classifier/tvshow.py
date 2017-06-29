@@ -8,7 +8,7 @@ class TvShowClassifier (Classifier):
     def calculateTVShowScore (self, item, verbose=False):
         if verbose: print ("Classifying " + item)
 
-        item = item.upper()
+        item = item.name.upper()
         scores = list (map (lambda tvshow : (tvshow, self.calculateSimilarity(item, self.tokens[tvshow])), self.tokens.keys()))
 
         if verbose:

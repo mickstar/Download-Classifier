@@ -45,7 +45,7 @@ def genericPrompt (item : str, classes):
 def yesNoPrompt (message):
     print (message)
     keys = [key for key,_ in YES_NO_PROMPT]
-    
+
     while True:
         userInput = input (createQuestionClasses (YES_NO_PROMPT))
         if userInput.upper() in keys:

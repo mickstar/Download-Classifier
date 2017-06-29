@@ -2,13 +2,13 @@ class Classifier :
     def __init__(self):
         pass
 
-    def calculateSimilarity (self, item, tokens):
-        itemTokens = set(item.upper()
+    def calculateSimilarity (self, name, tokens):
+        itemTokens = set(name.upper()
                             .replace(".", " ")
                             .replace("-", " ")
                             .split (" "))
 
-        for genericToken in ["OF", "THE", "IS"]:
+        for genericToken in tokens.genericTokens:
             if genericToken in itemTokens:
                 itemTokens.remove(genericToken)
 
