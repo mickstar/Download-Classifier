@@ -4,10 +4,9 @@ from classifier.classifier import Classifier
 
 bookExtensions = [".pdf",".epub", ".mobi"];
 
+SCORE_IS_BOOK = 1
+SCORE_IS_NOT_BOOK = 0
 class BookClassifier (Classifier):
-    SCORE_IS_BOOK = 1
-    SCORE_IS_NOT_BOOK = 0
-
     def __init__(self):
         pass
 
@@ -18,10 +17,10 @@ class BookClassifier (Classifier):
                 score = SCORE_IS_BOOK
 
         else:
-            if len (intersection(bookExtensions, item.filetypes) > 0):
+            if len (intersection(bookExtensions, item.filetypes)) > 0:
                 score = SCORE_IS_BOOK
-        score
+        return score
 
 
-def intersect(a, b):
+def intersection (a, b):
     return list(set(a) & set(b))

@@ -17,13 +17,13 @@ class Classifier:
 
     def classify(self, item):
         bookScore = self.bookClassifier.calculateSimilarity(item)
-        if bookScore == self.bookClassifier.SCORE_IS_BOOK:
+        if bookScore == 1:
             response = prompt.yesNoPrompt("Is {name} a Book?".format(name=item.name))
             if response == "Y":
-                classifyAsBook()
+                self.classifyAsBook(item)
 
-
-        return self.classifyFromUserInput(item)
+        else:
+            return self.classifyFromUserInput(item)
 
 
     def classifyAsMovie (self, item):
@@ -31,8 +31,11 @@ class Classifier:
     def classifyAsTVShow (self, item, tvshow):
         filesystem.directory.move (item.name, "/media/HDD/TV/{0}".format(tvshow))
 
+    def classifyAsBook (self, item):
+        filesystem.directory.move (item.name, "/media/HDD/Books")
+
     def ignoreItem (self, item):
-        self.ignoredDatabase.addIgnored (item)
+        self.ignoredDatabase.addIgnored (item.name)
 
     def classifyFromUserInput(self, item):
         response = prompt.genericPrompt(item.name, prompt.GENERIC_PROMPT)
@@ -61,7 +64,7 @@ class Classifier:
             else:
                 import filesystem.directory
                 shows = filesystem.directory.getTVShowNames()
-                index = prompt.selectPrompt(shows)
-                self.classifyAsTVShow (shows[index], item)
+                show = prompt.selectPrompt(shows)
+                self.classifyAsTVShow (item, show)
         else:
             raise Exception ("Uncatched response code " + response)

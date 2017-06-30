@@ -1,3 +1,4 @@
+import classifier.tokens as Tokens
 class Classifier :
     def __init__(self):
         pass
@@ -8,7 +9,7 @@ class Classifier :
                             .replace("-", " ")
                             .split (" "))
 
-        for genericToken in tokens.genericTokens:
+        for genericToken in Tokens.generic:
             if genericToken in itemTokens:
                 itemTokens.remove(genericToken)
 
